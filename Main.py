@@ -1,3 +1,4 @@
+import random
 class Personagens:
   def __init__(self, nome, vida, ataque, defesa):
     self.nome = nome
@@ -10,9 +11,11 @@ class Personagens:
     print(f"seu ataque é {self.ataque} pts")
     print(f"sua defesa é {self.defesa} pts")
   def atacar(self, inimigo):
-    if self.ataque > inimigo.defesa:
-      inimigo.vida -= self.ataque
-      print(f"tirou {self.ataque} pts")
+    print(f"{self.nome} atacou {inimigo.nome}")
+    dano = self.ataque - inimigo.defesa
+    if dano > 0:
+      inimigo.vida -= dano
+      print(f"tirou {dano} pts")
       if inimigo.vida <= 0:
         print(f"{inimigo.nome} morreu kkkkkkk")
     else:
@@ -34,4 +37,13 @@ while sapo.vida > 0 and pato.vida > 0:
      pato.mostrar_infor()
    else: 
      print("Número Invalido")
+   if pato.vida <= 0:
+     break
+   opcoespato = [1,2]
+   escolhapato = random.choice(opcoespato)
+   if escolhapato == 1:
+     pato.atacar(sapo)
+   else:
+     pato.treinar()
+   
    print('-' * 80)
